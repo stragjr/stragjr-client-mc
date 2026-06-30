@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "stragjrclient",
+  "version": "${version}",
+  "name": "StragJr Client",
+  "description": "A high-performance Minecraft Fabric client with custom features",
+  "authors": ["StragJr"],
+  "contact": {
+    "homepage": "https://github.com/stragjr/stragjr-client-mc",
+    "sources": "https://github.com/stragjr/stragjr-client-mc"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.stragjr.client.StragJrClient"
+    ],
+    "client": [
+      "com.stragjr.client.ClientInit"
+    ]
+  },
+  "mixins": [
+    "stragjrclient.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": "1.21.1"
+  }
+}

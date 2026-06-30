@@ -1,0 +1,48 @@
+plugins {
+	id 'fabric-loom' version '1.6.+'
+	id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_21
+targetCompatibility = JavaVersion.VERSION_21
+
+archivesBaseName = "stragjrclient"
+version = "1.0.0"
+group = "com.stragjr.client"
+
+repositories {
+	mavenCentral()
+	maven { url = "https://api.modrinth.com/maven" }
+	maven { url = "https://maven.fabricmc.net/" }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:1.21.1"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:0.15.11"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.100.1+1.21.1"
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "group", project.group
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version, "group": project.group
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = "UTF-8"
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${archivesBaseName}"}
+	}
+}

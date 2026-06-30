@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+dist/
+out/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Minecraft
+run/
+
+# Fabric
+src/main/resources/.cache/
+src/main/resources/META-INF/
+
+# Environment
+.env
+*.jar
+*.war
